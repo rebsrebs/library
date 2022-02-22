@@ -36,12 +36,17 @@ function hideElement(ID){
 
 // //Function to send new book to card container
 // // https://www.w3schools.com/jsref/met_node_appendchild.asp
-const newBookCard = function(){
+const newBookCard = function(book){
     const bookCard = document.createElement("div");
     bookCard.classList.add( "bookCard" );
-    const textnode = document.createTextNode("Water");
-    console.log(textnode);
-    bookCard.appendChild(textnode);
+    bookCard.textContent=
+    `Title: ${book.title}\r\n
+    Author: ${book.author}\r\n
+    Pages: ${book.pageCount}\r\n    
+    `;
+    // const textnode = document.createTextNode("Water");
+    // console.log(textnode);
+    // bookCard.appendChild(textnode);
     document.getElementById("cardcontainer").appendChild(bookCard);
     }
     
@@ -57,6 +62,7 @@ function saveNewBook(){
     console.log(newBook);
     console.log([myLibrary]);
 //   newBook.newBookCard();
+    newBookCard(newBook);
     document.getElementById("newBookForm").reset();
     hideElement("newBookFormContainer");
 }
@@ -86,3 +92,7 @@ newbooksubmit.addEventListener('click',function(){
 //     element.className = className
 //     return element;
 //   }
+
+
+var bookCardCode =
+'<p>'
