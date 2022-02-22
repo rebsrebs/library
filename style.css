@@ -126,13 +126,18 @@ align-items:baseline;
 
 /* CONTAINER FOR BOOK CARDS */
 .cardcontainer{
-    background-color:rgb(231, 231, 68);
-    height:400px;
-    min-width:400px;
+    padding:10px;
+    /* background-color: aquamarine; */
     margin:40px;
     display:grid;
-    grid-template-rows: 400px;
+    grid-auto-flow: column;
     gap:10px;
+}
+
+.bookCard{
+    padding:20px;
+    border-radius:15px;
+    background-color: pink;
 }
 
 
