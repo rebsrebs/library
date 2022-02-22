@@ -6,16 +6,23 @@ let myLibrary = [];
 const cardcontainer = document.querySelector('#cardcontainer');
 const newbookbutton = document.querySelector('#newbookbutton');
 const newbooksubmit = document.querySelector('#newbooksubmit');
+// const bookCard = document.createElement("div");
+
+
+
 
 //constructor
-function Book(title,author,pages,read){
+function bookPrototype(title,author,pages,read){
     this.title = title;
     this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this.pageCount = pageCount;
+    this.readStatus = readStatus;
     this.card = function() {
-        let div = document.createElement('div');
-        document.cardcontainer.appendChild('div');
+        let bookCard = document.createElement('div');
+        const textnode = document.createTextNode(this.title);
+        bookCard.appendChild(textnode);
+        // document.cardcontainer.appendChild(bookCard);
+        document.getElementById("cardcontainer").appendChild(bookCard);
     }}
 
 // Function to add new book to library 
@@ -35,7 +42,8 @@ function hideElement(ID){
 
 //Function to save a new book using input from form and push to myLibrary array
 function saveNewBook(){
-    let newBook = {};
+    // let newBook = {};
+    var newBook= Object.create(bookPrototype.prototype);
     newBook.title = document.getElementById('title').value;
     newBook.author = document.getElementById('author').value;
     newBook.pageCount = document.getElementById('pageCount').value;
@@ -43,9 +51,18 @@ function saveNewBook(){
     myLibrary.push(newBook);
     console.log({newBook});
     console.log([myLibrary]);
+    // newBook.card();
     document.getElementById("newBookForm").reset();
-    hideElement("newBookForm");
+    hideElement("newBookFormContainer");
 }
+
+// //Function to send new book to card container
+// // https://www.w3schools.com/jsref/met_node_appendchild.asp
+// function newBookCard(book){
+// const textnode = document.createTextNode("Water");
+// bookCard.appendChild(textnode);
+// document.getElementById("cardcontainer").appendChild(bookCard);
+// }
 
 //New Book button is pushed
 newbookbutton.addEventListener('click',function(){
@@ -53,7 +70,9 @@ newbookbutton.addEventListener('click',function(){
     });
     
 //Submit button on New Book form is pushed   
-newbooksubmit.addEventListener('click',saveNewBook);
+newbooksubmit.addEventListener('click',function(){
+    saveNewBook();
+    });
 
 
 

@@ -10,7 +10,6 @@ h3{
     margin-top:0;
 }
 
-
 #newBookFormContainer{
     display:none;
     border:1px solid black;
@@ -27,6 +26,13 @@ h3{
     grid-template-rows: auto auto auto auto auto auto auto;
     justify-content:center;
     width:100%;
+}
+
+#newbooksubmit{
+    display:grid;
+    width:100%;
+    /* width:fit-content; */
+    justify-self: center;
 }
 
 .formitem{
@@ -83,10 +89,15 @@ legend{
     padding:0;
 }
 
-button{
+.button{
     padding:5px 10px 5px 10px;
     width:auto;
+    background-color: rgb(240, 202, 243);
+    border-style:none;
+    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.2);
 }
+
+
 
 label, legend{
     margin-bottom:3px;
@@ -103,6 +114,26 @@ align-items:baseline;
 }
 
 
+
+.button:hover{
+    background-color: rgb(241, 181, 245);
+}
+
+.button:active{
+    background-color: rgb(255, 0, 255);
+    transform: scale(1.02);
+}
+
+/* CONTAINER FOR BOOK CARDS */
+.cardcontainer{
+    background-color:rgb(231, 231, 68);
+    height:400px;
+    min-width:400px;
+    margin:40px;
+    display:grid;
+    grid-template-rows: 400px;
+    gap:10px;
+}
 
 
 
