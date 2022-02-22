@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header" class="header">
+        <h1>My Library</h1>
+    </div>
+    
+
+<div>
+<button id="newbookbutton">NEW BOOK</button>
+</div>
+
+
+<div id="newBookFormContainer">
+    <form id="newBookForm" action="">
+        <h3 id="bookdetails">Book details</h3>
+    <div class="formitem">
+        <label for="title">Title</label>
+        <input type="text" id="title">
+    </div>
+    <div class="formitem">
+    
+        <label for="author">Author</label>
+        <input type="text" id="author">
+    </div>
+    
+    <div class="formitem">
+        <label for="" id="pageCount" class="formlabel">Page Count</label>
+        <input type="number" name="pageCount" id="">
+    </div>
+    
+  <fieldset id="readStatuscheck">
+        <legend id="haveyoureadit">Have you read it?</legend>
+        <div class="radioanswers">
+        <!-- <div class="radioset"> -->
+            <label for="readStatus">Yes</label>
+            <input type="radio" name="readStatus" id="yesread" value="yesread" class="radio">
+        <!-- </div> -->
+        <!-- <div class="radioset"> -->
+            <label for="readStatus">No</label>
+            <input type="radio" name="readStatus" id="noread" value="noread" class="radio">
+        <!-- </div> -->
+        </div>
+    </fieldset>
+    <button type="button" id="newbooksubmit">+ Add Book</button>
+    </form>
+</div>
+
+
+
+<div id="cardcontainer" class="cardcontainer">
+    
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
