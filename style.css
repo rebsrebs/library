@@ -11,15 +11,28 @@ h3{
     margin-top:0;
 }
 
+@keyframes append-animate {
+	from {
+		transform: scale(.9);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
+}
+
 #newBookFormContainer{
     display:none;
     border:1px solid black;
     border-radius:15px;
     padding:20px 30px 20px 30px;
     margin:20px;
-    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);;
-    min-width:30vw;ow to 
+    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
+    min-width:30vw;
     max-width:600px;
+    /* animation: append-animate .3s linear; */
+    animation: append-animate .2s ease-out;
 }
 
 #newBookForm{
@@ -141,6 +154,8 @@ align-items:baseline;
     background-color: rgb(249, 217, 222);
     white-space: pre-line;
     width:200px;
+    animation: append-animate .2s ease-out;
+    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 
