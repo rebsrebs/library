@@ -51,7 +51,8 @@ const newBookCard = function(book){
     bookCard.textContent=
     `Title: "${book.title}"\r\n
     Author: ${book.author}\r\n
-    Pages: ${book.pageCount}\r\n    
+    Pages: ${book.pageCount}\r\n 
+    Status: ${book.readStatus}   
     `;
     // const textnode = document.createTextNode("Water");
     // console.log(textnode);
@@ -59,21 +60,6 @@ const newBookCard = function(book){
     document.getElementById("cardcontainer").appendChild(bookCard);
     }
     
-//Function to save a new book using input from form and push to myLibrary array
-// function saveNewBook(){
-//     var newBook= Object.create(bookPrototype.prototype);
-//         newBook.title = document.getElementById('title').value;
-//         newBook.author = document.getElementById('author').value;
-//         newBook.pageCount = document.getElementById('pageCount').value;
-//         newBook.readStatus = document.getElementById('readStatus').value;
-//     myLibrary.push(newBook);
-//     console.log(newBook);
-//     console.log([myLibrary]);
-//     newBookCard(newBook);
-//     console.log(readStatus.value);
-//     document.getElementById("newBookForm").reset();
-//     hideElement("newBookFormContainer");
-// }
 
 function saveNewBook(){
     var newBook= Object.create(bookPrototype.prototype);
