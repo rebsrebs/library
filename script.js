@@ -60,12 +60,28 @@ const newBookCard = function(book){
     }
     
 //Function to save a new book using input from form and push to myLibrary array
+// function saveNewBook(){
+//     var newBook= Object.create(bookPrototype.prototype);
+//         newBook.title = document.getElementById('title').value;
+//         newBook.author = document.getElementById('author').value;
+//         newBook.pageCount = document.getElementById('pageCount').value;
+//         newBook.readStatus = document.getElementById('readStatus').value;
+//     myLibrary.push(newBook);
+//     console.log(newBook);
+//     console.log([myLibrary]);
+//     newBookCard(newBook);
+//     console.log(readStatus.value);
+//     document.getElementById("newBookForm").reset();
+//     hideElement("newBookFormContainer");
+// }
+
 function saveNewBook(){
     var newBook= Object.create(bookPrototype.prototype);
         newBook.title = document.getElementById('title').value;
         newBook.author = document.getElementById('author').value;
         newBook.pageCount = document.getElementById('pageCount').value;
-        newBook.readStatus = document.getElementById('readStatus').value;
+    setReadStatus(); 
+        newBook.readStatus = readStatus;
     myLibrary.push(newBook);
     console.log(newBook);
     console.log([myLibrary]);
@@ -77,11 +93,11 @@ function saveNewBook(){
 
 //This does not work
 // function to set a book's read value based on checkbox input
-const setReadValue = function(){
-    if (readStatus.checked){
-        readValue='read';
+const setReadStatus = function(){
+    if (readValue.checked){
+        readStatus='read';
     }else{
-        readValue='unread';
+        readStatus='unread';
     }
 }
 
