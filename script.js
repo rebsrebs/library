@@ -89,27 +89,68 @@ function removeAllChildNodes(parent) {
 // newCards fucntion - when you add a new book to the library
 //it removes all book cards and recreates them for every book
 //in the myLibrary array.
+
 const newCards = function(array){
+
+    //just making sure this is running since I call it 
+    //from inside the saveNewBook function
     console.log('newCards function is running')
-    console.log([array]);
+    //clear existing cards
     removeAllChildNodes(cardcontainer);
 
+    //loop through array
    for (let i = 0; i < array.length; i++) {
        console.log(array[i].author);
        
+    //for every object in array, assign array index number
+    //to object's indexNo property
     array[i].indexNo = i;
-    
+
+    //test p to try appending inside bookCard instead of remover button
+    // const testP = document.createElement("p");
+    // testP.textContent="this is a test";
+
+    //create bookCard div with class and ID
     const bookCard = document.createElement("div");
         bookCard.classList.add( "bookCard" );
+        bookCard.ID=(`bookCard_${i}`)
+        console.log(bookCard.ID);
+
+        //fill bookCard with these properties of the book object
         bookCard.textContent=
         `Title: ${array[i].title}\r\n
         Author: ${array[i].author}\r\n
         Pages: ${array[i].pageCount}\r\n 
         Status: ${array[i].readStatus}\r\n 
         ID:${array[i].identifier}  \r\n 
-        Index:  ${array[i].indexNo}
+        Index:  ${array[i].indexNo}\r\n 
         `;
+        //put this book card iside the card container div
         document.getElementById("cardcontainer").appendChild(bookCard);
+
+        //create remover button for each book card
+    const removerButton = document.createElement('button');
+        removerButton.type='button';
+        removerButton.textContent = 'Remove';
+        // removerButton.className = 'removerbutton';
+        removerButton.classList.add('removerbutton');
+        removerButton.classList.add('button');
+
+        // bookCard.appendChild(testP);
+
+        // put remover button on this card
+        bookCard.appendChild(removerButton); 
+
+        //when remover button is clicked
+        removerButton.addEventListener('click',function(){
+
+            //remove book from myLibrary array by index number
+            myLibrary.splice(i, 1);
+
+            //remove book card by ID
+            document.getElementById(`bookCard_${i}`).remove();
+                });
+
     };}
     
 
