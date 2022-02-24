@@ -33,7 +33,10 @@ function bookPrototype(title,author,pageCount,readStatus){
     this.author = author;
     this.pageCount = pageCount;
     this.readStatus = readStatus;
+    //identifier is unique ID that doesn't change even if place in array changes
     this.ID = identifier;
+    //indexNO is the same as the object's index number in the array
+    this.indexNo = indexNo;
 }
 
 // FUNCTIONS
@@ -93,6 +96,8 @@ const newCards = function(array){
 
    for (let i = 0; i < array.length; i++) {
        console.log(array[i].author);
+       
+    array[i].indexNo = i;
     
     const bookCard = document.createElement("div");
         bookCard.classList.add( "bookCard" );
@@ -101,7 +106,8 @@ const newCards = function(array){
         Author: ${array[i].author}\r\n
         Pages: ${array[i].pageCount}\r\n 
         Status: ${array[i].readStatus}\r\n 
-        ID:${array[i].identifier}    
+        ID:${array[i].identifier}  \r\n 
+        Index:  ${array[i].indexNo}
         `;
         document.getElementById("cardcontainer").appendChild(bookCard);
     };}
