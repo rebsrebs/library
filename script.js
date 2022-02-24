@@ -13,7 +13,7 @@ let myLibrary = [];
 //     readStatus = 'read',
 // }]
 
-
+let bookCounter = 0;
 
 //Book card divs are placed inside this container
 const cardcontainer = document.querySelector('#cardcontainer');
@@ -33,6 +33,7 @@ function bookPrototype(title,author,pageCount,readStatus){
     this.author = author;
     this.pageCount = pageCount;
     this.readStatus = readStatus;
+    this.ID = identifier;
 }
 
 // FUNCTIONS
@@ -81,14 +82,13 @@ function removeAllChildNodes(parent) {
 
 //end old version of newBookCard
 
-//  for each start array.forEach((item) => {
-// for version(let i = 0, i = array.length-1, i++)
-// new version is now newCards since it adds all of them
+
+// newCards fucntion - when you add a new book to the library
+//it removes all book cards and recreates them for every book
+//in the myLibrary array.
 const newCards = function(array){
     console.log('newCards function is running')
     console.log([array]);
-   
-    
     removeAllChildNodes(cardcontainer);
 
    for (let i = 0; i < array.length; i++) {
@@ -100,17 +100,20 @@ const newCards = function(array){
         `Title: ${array[i].title}\r\n
         Author: ${array[i].author}\r\n
         Pages: ${array[i].pageCount}\r\n 
-        Status: ${array[i].readStatus}   
+        Status: ${array[i].readStatus}\r\n 
+        ID:${array[i].identifier}    
         `;
         document.getElementById("cardcontainer").appendChild(bookCard);
     };}
     
 
 function saveNewBook(){
+    bookCounter = bookCounter+1;
     var newBook= Object.create(bookPrototype.prototype);
         newBook.title = document.getElementById('title').value;
         newBook.author = document.getElementById('author').value;
         newBook.pageCount = document.getElementById('pageCount').value;
+        newBook.identifier = `ML_${bookCounter}`;
     setReadStatus(); 
         newBook.readStatus = readStatus;
     myLibrary.push(newBook);
