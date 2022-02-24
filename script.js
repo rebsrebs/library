@@ -106,50 +106,50 @@ const newCards = function(array){
     //to object's indexNo property
     array[i].indexNo = i;
 
-    //test p to try appending inside bookCard instead of remover button
-    // const testP = document.createElement("p");
-    // testP.textContent="this is a test";
-
     //create bookCard div with class and ID
     const bookCard = document.createElement("div");
-        bookCard.classList.add( "bookCard" );
-        bookCard.ID=(`bookCard_${i}`)
+        bookCard.classList.add( "bookCard");
+        bookCard.setAttribute('ID', `bookCard_${i}`);
         console.log(bookCard.ID);
 
         //fill bookCard with these properties of the book object
         bookCard.textContent=
-        `Title: ${array[i].title}\r\n
-        Author: ${array[i].author}\r\n
-        Pages: ${array[i].pageCount}\r\n 
-        Status: ${array[i].readStatus}\r\n 
-        ID:${array[i].identifier}  \r\n 
-        Index:  ${array[i].indexNo}\r\n 
+            `Title: ${array[i].title}\r\n
+            Author: ${array[i].author}\r\n
+            Pages: ${array[i].pageCount}\r\n 
+            Status: ${array[i].readStatus}\r\n 
+            
         `;
+
         //put this book card iside the card container div
         document.getElementById("cardcontainer").appendChild(bookCard);
 
-        //create remover button for each book card
+        //create remover button for each book card and add text and classes
     const removerButton = document.createElement('button');
         removerButton.type='button';
         removerButton.textContent = 'Remove';
-        // removerButton.className = 'removerbutton';
         removerButton.classList.add('removerbutton');
         removerButton.classList.add('button');
 
-        // bookCard.appendChild(testP);
-
-        // put remover button on this card
+        // put remover button on this book card
         bookCard.appendChild(removerButton); 
 
         //when remover button is clicked
         removerButton.addEventListener('click',function(){
 
-            //remove book from myLibrary array by index number
+            //remove book card by ID
+            console.log(`bookCard_${i}`)
+            document.getElementById(`bookCard_${i}`).remove();
+
+                //see that book object exists
+                console.log(myLibrary[i]);
+
+            //remove book object from myLibrary array by index number
             myLibrary.splice(i, 1);
 
-            //remove book card by ID
-            document.getElementById(`bookCard_${i}`).remove();
-                });
+                //see that book object has been removed from array
+                console.log(myLibrary[i]);
+            });
 
     };}
     
@@ -216,3 +216,9 @@ newbooksubmit.addEventListener('click',function(){
 
 // var bookCardCode =
 // '<p>'
+
+
+
+//removed from card display
+// ID:${array[i].identifier}  \r\n 
+//             Index:  ${array[i].indexNo}\r\n 
