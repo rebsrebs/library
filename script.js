@@ -123,16 +123,24 @@ const newCards = function(array){
         //put this book card iside the card container div
         document.getElementById("cardcontainer").appendChild(bookCard);
 
-//create read status toggle
-    // const readToggle = document.createElement('input');
-    // readToggle.setAttribute('type', 'checkbox');
+    //create read status toggle
 
-    // const readToggleLabel = document.createElement('label');
-    // readToggleLabel.classList.add('switch');
+    const readToggleLabel = document.createElement('label');
+    readToggleLabel.classList.add('switch');
+    readToggleLabel.setAttribute('htmlFor', 'readToggleID');
 
-    // const spanToggle = document.createElement('span');
-    // spanToggle.classList.add('slider');
-    // spanToggle.classList.add('round');
+    const readToggleInput = document.createElement('input');
+    readToggleInput.setAttribute('type', 'checkbox');
+    readToggleInput.setAttribute('ID', 'readToggleID');
+
+    const readToggleSpan = document.createElement('span');
+    readToggleSpan.classList.add('slider');
+    readToggleSpan.classList.add('round');
+
+    bookCard.appendChild(readToggleLabel); 
+    bookCard.appendChild(readToggleInput); 
+    bookCard.appendChild(readToggleSpan); 
+ 
    
 
         //create remover button for each book card and add text and classes
