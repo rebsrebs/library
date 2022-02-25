@@ -11,13 +11,17 @@
     /* book card styling */
     --bookCard-bgcolor: rgb(249, 217, 222);
     /* unread button */
-    --unreadButton-bgcolor:rgb(167, 156, 157);
-    --unreadButton-hover-bgcolor:rgb(151, 124, 126);
-    --unreadButton-active-bgcolor:rgb(86, 236, 129);
+    --unreadButton-bgcolor:rgb(250, 246, 246);
+    --unreadButton-hover-bgcolor:rgb(225, 235, 220);
+    --unreadButton-active-bgcolor:rgb(199, 221, 188);
     /* read button */
-    --readButton-bgcolor:rgb(191, 236, 203);
-    --readButton-hover-bgcolor:rgb(155, 219, 173);
-    --readButton-active-bgcolor: rgb(131, 96, 98);
+    --readButton-bgcolor:white;
+    --readButton-hover-bgcolor:rgb(225, 235, 220);
+    --readButton-active-bgcolor: rgb(199, 221, 188);
+    /* unread text color */
+    --read-textcolor:green;
+    /* read text color */
+    --unread-textcolor:gray;
     /* remover button */
     --removerButton-bgcolor:rgb(248, 131, 88);
     --removerButton-hover-bgcolor:rgb(230, 98, 50);
@@ -203,9 +207,6 @@ align-items:baseline;
     gap:10px;
 }
 
-/* .removerbutton{
-    background-color: rgb(235, 105, 155);
-} */
 
 .bcBold{
     font-weight:bold;
@@ -243,7 +244,9 @@ align-items:baseline;
 
 .readstatusbutton{
     grid-area: 4 / 2 / 5 / 3 ;
-    width:fit-content;
+    width:12ch;
+    /* border-radius:10px; */
+   justify-content:center;
 }
 
 .removerbutton{
@@ -253,14 +256,19 @@ align-items:baseline;
     border-radius:10px;
     background-color:var(--removerButton-bgcolor);
     
+    
 }
 
 .removerbutton:hover{
     background-color:var(--removerButton-hover-bgcolor);
+    font-style:italic;
+    
 }
 
 .removerbutton:active{
     background-color: var(--removerButton-active-bgcolor);
+    font-style:italic;
+    font-weight:bolder;
 }
 
 
@@ -270,29 +278,46 @@ align-items:baseline;
     justify-items: center;
     height:1.8em;
     padding:8px 12px 8px 12px;
-    /* need to make box shadow show up on these */
+    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .read{
     background-color: var(--readButton-bgcolor);
+    color:var(--read-textcolor);
+    font-weight:bolder;
+
+    /* this works but not using */
+    /* text-decoration: wavy underline lime;
+    text-underline-position:under;     */
 }
 
 .read:hover{
-    background-color: var(--readButton-hover-bgcolor);
+    /* background-color: var(--readButton-hover-bgcolor); */
+    /* transform: scale(1.05); */
+    font-style:italic;
 }
 
 .read:active{
     background-color: var(--readButton-active-bgcolor);
+    font-style:italic;
+   
 }
 
 .unread{
     background-color: var(--unreadButton-bgcolor);
+    color:var(--unread-textcolor);
+    
 }
 
 .unread:hover{
-    background-color: var(--unreadButton-hover-bgcolor);
+    /* background-color: var(--unreadButton-hover-bgcolor); */
+    font-style:italic;
+   
 }
 
 .unread:active{
     background-color: var(--unreadButton-active-bgcolor);
+    font-style:italic;
+    
+    
 }
