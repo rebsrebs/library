@@ -109,8 +109,7 @@ const newCards = function(array){
     //create bookCard div with class and ID
     const bookCard = document.createElement("div");
         bookCard.classList.add( "bookCard");
-        bookCard.setAttribute('ID', `bookCard_${i}`);
-        console.log(bookCard.ID);
+        bookCard.classList.add( `bookCard_${i}`);
 
         //fill bookCard with these properties of the book object
         bookCard.textContent=
@@ -123,6 +122,18 @@ const newCards = function(array){
 
         //put this book card iside the card container div
         document.getElementById("cardcontainer").appendChild(bookCard);
+
+//create read status toggle
+    // const readToggle = document.createElement('input');
+    // readToggle.setAttribute('type', 'checkbox');
+
+    // const readToggleLabel = document.createElement('label');
+    // readToggleLabel.classList.add('switch');
+
+    // const spanToggle = document.createElement('span');
+    // spanToggle.classList.add('slider');
+    // spanToggle.classList.add('round');
+   
 
         //create remover button for each book card and add text and classes
     const removerButton = document.createElement('button');
@@ -138,8 +149,11 @@ const newCards = function(array){
         removerButton.addEventListener('click',function(){
 
             //remove book card by ID
-            console.log(`bookCard_${i}`)
-            document.getElementById(`bookCard_${i}`).remove();
+            // console.log(`bookCard_${i}`)
+            // document.getElementById(`bookCard_${i}`).remove();
+
+            // remove book card with "this" instead
+            bookCard.remove();
 
                 //see that book object exists
                 console.log(myLibrary[i]);
