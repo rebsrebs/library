@@ -166,8 +166,10 @@ bookCard.appendChild(bcPageCountFill);
 
 if (array[i].readStatus === 'read'){
         readStatusButton.textContent = 'READ';
+        readStatusButton.classList.add('read');
 }else if (array[i].readStatus === 'unread'){
     readStatusButton.textContent = 'UNREAD';
+    readStatusButton.classList.add('unread');
 };
         // put read status button on this book card
         bookCard.appendChild(readStatusButton); 
@@ -179,10 +181,14 @@ if (array[i].readStatus === 'read'){
                 array[i].readStatus = 'unread';
                 console.log(array[i].readStatus);
                 readStatusButton.textContent = 'UNREAD';
+                readStatusButton.classList.remove('read');
+                readStatusButton.classList.add('unread');
             } else {
                 array[i].readStatus = 'read';
                 readStatusButton.textContent = 'READ';
                 console.log(array[i].readStatus);
+                readStatusButton.classList.remove('unread');
+                readStatusButton.classList.add('read');
             };
      });
 

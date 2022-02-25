@@ -1,4 +1,32 @@
 
+
+/* COLOR VARIABLES */
+:root {
+    
+    /* Buttons used for New Book and Add Book  */
+    --mainButtons-bgcolor: rgb(240, 202, 243);
+    --mainButtons-hover-bgcolor:rgb(241, 181, 245);
+    --mainButtons-active-bgcolor: rgb(255, 0, 255);
+
+    /* book card styling */
+    --bookCard-bgcolor: rgb(249, 217, 222);
+    /* unread button */
+    --unreadButton-bgcolor:rgb(167, 156, 157);
+    --unreadButton-hover-bgcolor:rgb(151, 124, 126);
+    --unreadButton-active-bgcolor:rgb(86, 236, 129);
+    /* read button */
+    --readButton-bgcolor:rgb(191, 236, 203);
+    --readButton-hover-bgcolor:rgb(155, 219, 173);
+    --readButton-active-bgcolor: rgb(131, 96, 98);
+    /* remover button */
+    --removerButton-bgcolor:rgb(248, 131, 88);
+    --removerButton-hover-bgcolor:rgb(230, 98, 50);
+    --removerButton-active-bgcolor:rgb(247, 78, 17);
+
+    /*accent color for check in checkbox input*/
+    --accentColor: rgb(227, 248, 88);
+  }
+
 body{
     display:flex;
     flex-direction: column;
@@ -63,7 +91,7 @@ input[type="text"]{
 }
 
 input[type="checkbox"]{
-    accent-color:rgb(218, 140, 23);
+    accent-color: var(--accentColor);
 }
 
 fieldset{
@@ -110,9 +138,25 @@ legend{
 .button{
     padding:5px 10px 5px 10px;
     width:auto;
-    background-color: rgb(240, 202, 243);
     border-style:none;
-    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow:1px 2px 3px rgba(216, 162, 162, 0.2);
+}
+
+.button:active{
+    transform: scale(1.02);
+}
+
+.mainbutton{
+    background-color: var(--mainButtons-bgcolor);
+}
+
+.mainbutton:hover{
+    background-color: var(--mainButtons-hover-bgcolor);
+}
+
+.mainbutton:active{
+    background-color: var(--mainButtons-active-bgcolor);
+    
 }
 
 
@@ -133,14 +177,7 @@ align-items:baseline;
 
 
 
-.button:hover{
-    background-color: rgb(241, 181, 245);
-}
 
-.button:active{
-    background-color: rgb(255, 0, 255);
-    transform: scale(1.02);
-}
 
 /* CONTAINER FOR BOOK CARDS */
 .cardcontainer{
@@ -155,7 +192,7 @@ align-items:baseline;
 .bookCard{
     padding:20px;
     border-radius:15px;
-    background-color: rgb(249, 217, 222);
+    background-color: var(--bookCard-bgcolor);
     white-space: pre-line;
     width:200px;
     animation: append-animate .2s ease-out;
@@ -211,11 +248,19 @@ align-items:baseline;
 
 .removerbutton{
     grid-area: 5 / 1 / 6 / 3;
-    /* width:10ch; */
     justify-self:end;
     align-self:end;
     border-radius:10px;
-    background-color:rgb(240, 106, 106);
+    background-color:var(--removerButton-bgcolor);
+    
+}
+
+.removerbutton:hover{
+    background-color:var(--removerButton-hover-bgcolor);
+}
+
+.removerbutton:active{
+    background-color: var(--removerButton-active-bgcolor);
 }
 
 
@@ -225,4 +270,29 @@ align-items:baseline;
     justify-items: center;
     height:1.8em;
     padding:8px 12px 8px 12px;
+    /* need to make box shadow show up on these */
+}
+
+.read{
+    background-color: var(--readButton-bgcolor);
+}
+
+.read:hover{
+    background-color: var(--readButton-hover-bgcolor);
+}
+
+.read:active{
+    background-color: var(--readButton-active-bgcolor);
+}
+
+.unread{
+    background-color: var(--unreadButton-bgcolor);
+}
+
+.unread:hover{
+    background-color: var(--unreadButton-hover-bgcolor);
+}
+
+.unread:active{
+    background-color: var(--unreadButton-active-bgcolor);
 }
