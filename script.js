@@ -111,44 +111,96 @@ const newCards = function(array){
         bookCard.classList.add( "bookCard");
         bookCard.classList.add( `bookCard_${i}`);
 
+//put this book card iside the card container div
+document.getElementById("cardcontainer").appendChild(bookCard);
+
+//experiment to create separate components to fill out book card
+const bcTitle = document.createElement("div");
+bcTitle.classList.add( "bcTitle", "bcBold");
+bcTitle.textContent = 'Title:';
+
+const bcTitleFill = document.createElement("div");
+bcTitleFill.classList.add( "bcTitleFill", "bcFill");
+bcTitleFill.textContent = `${array[i].title}`;
+
+const bcAuthor = document.createElement("div");
+bcAuthor.classList.add( "bcAuthor", "bcBold");
+bcAuthor.textContent = 'Author:';
+
+const bcAuthorFill = document.createElement("div");
+bcAuthorFill.classList.add( "bcAuthorFill", "bcFill");
+bcAuthorFill.textContent = `${array[i].author}`;
+
+const bcPageCount = document.createElement("div");
+bcPageCount.classList.add( "bcPageCount", "bcBold");
+bcPageCount.textContent = 'Pages:';
+
+const bcPageCountFill = document.createElement("div");
+bcPageCountFill.classList.add( "bcPageCountFill", "bcFill");
+bcPageCountFill.textContent = `${array[i].pageCount}`;
+
+//add divs to bookcard
+bookCard.appendChild(bcTitle); 
+bookCard.appendChild(bcTitleFill); 
+bookCard.appendChild(bcAuthor); 
+bookCard.appendChild(bcAuthorFill); 
+bookCard.appendChild(bcPageCount); 
+bookCard.appendChild(bcPageCountFill); 
+
+
         //fill bookCard with these properties of the book object
-        bookCard.textContent=
-            `Title: ${array[i].title}\r\n
-            Author: ${array[i].author}\r\n
-            Pages: ${array[i].pageCount}\r\n 
-            Status: ${array[i].readStatus}\r\n 
-            
-        `;
+        // bookCard.textContent=
+        //     `Title: ${array[i].title}\r\n
+        //     Author: ${array[i].author}\r\n
+        //     Pages: ${array[i].pageCount}\r\n 
+           
+        // `;
 
-        //put this book card iside the card container div
-        document.getElementById("cardcontainer").appendChild(bookCard);
 
-    //create read status toggle
 
-    const readToggleLabel = document.createElement('label');
-    readToggleLabel.classList.add('switch');
-    readToggleLabel.setAttribute('htmlFor', 'readToggleID');
 
-    const readToggleInput = document.createElement('input');
-    readToggleInput.setAttribute('type', 'checkbox');
-    readToggleInput.setAttribute('ID', 'readToggleID');
+//READ STATUS BUTTON CHANGES WHEN YOU CLICK IT
+    const readStatusButton = document.createElement('button');
+        readStatusButton.type='button';
+        readStatusButton.classList.add('button','bookcardbutton','readstatusbutton');
 
-    const readToggleSpan = document.createElement('span');
-    readToggleSpan.classList.add('slider');
-    readToggleSpan.classList.add('round');
+if (array[i].readStatus === 'read'){
+        readStatusButton.textContent = 'READ';
+}else if (array[i].readStatus === 'unread'){
+    readStatusButton.textContent = 'UNREAD';
+};
+        // put read status button on this book card
+        bookCard.appendChild(readStatusButton); 
 
-    bookCard.appendChild(readToggleLabel); 
-    bookCard.appendChild(readToggleInput); 
-    bookCard.appendChild(readToggleSpan); 
- 
+        //when you click read Status button
+        readStatusButton.addEventListener('click',function(){
+
+            if (array[i].readStatus === 'read'){
+                array[i].readStatus = 'unread';
+                console.log(array[i].readStatus);
+                readStatusButton.textContent = 'UNREAD';
+            } else {
+                array[i].readStatus = 'read';
+                readStatusButton.textContent = 'READ';
+                console.log(array[i].readStatus);
+            };
+     });
+
+//Create switch icon
+const switchIcon = document.createElement("img");
+switchIcon.classList.add("switchicon");
+switchIcon.src = "images/switch-horizontal.svg";
+
+//add switch icon to book card
+bookCard.appendChild(switchIcon);
+
    
 
         //create remover button for each book card and add text and classes
     const removerButton = document.createElement('button');
         removerButton.type='button';
-        removerButton.textContent = 'Remove';
-        removerButton.classList.add('removerbutton');
-        removerButton.classList.add('button');
+        removerButton.textContent = 'Delete';
+        removerButton.classList.add('removerbutton','button','bookcardbutton');
 
         // put remover button on this book card
         bookCard.appendChild(removerButton); 
@@ -244,3 +296,28 @@ newbooksubmit.addEventListener('click',function(){
 //removed from card display
 // ID:${array[i].identifier}  \r\n 
 //             Index:  ${array[i].indexNo}\r\n 
+
+
+
+
+
+
+
+  //create read status toggle - this was in inside newCards function
+
+    // const readToggleLabel = document.createElement('label');
+    // readToggleLabel.classList.add('switch');
+    // readToggleLabel.setAttribute('htmlFor', 'readToggleID');
+
+    // const readToggleInput = document.createElement('input');
+    // readToggleInput.setAttribute('type', 'checkbox');
+    // readToggleInput.setAttribute('ID', 'readToggleID');
+
+    // const readToggleSpan = document.createElement('span');
+    // readToggleSpan.classList.add('slider');
+    // readToggleSpan.classList.add('round');
+
+    // bookCard.appendChild(readToggleLabel); 
+    // bookCard.appendChild(readToggleInput); 
+    // bookCard.appendChild(readToggleSpan); 
+ 
