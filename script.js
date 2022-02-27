@@ -265,10 +265,17 @@ const setReadStatus = function(){
 // EVENT LISTENERS
 
 //New Book button is pushed
-newbookbutton.addEventListener('click',function(){
-    displayElement("newBookFormContainer");
-    });
-    
+
+// newbookbutton.addEventListener('click',function(){
+//     displayElement("newBookFormContainer");
+//     });
+
+//trying a new way to write it using .bind, not sure what to put as the scope parameter
+newbookbutton.addEventListener('click', displayElement.bind(null, 'newBookFormContainer'));
+
+
+
+ 
 //Submit button on New Book form is pushed   
 newbooksubmit.addEventListener('click',function(){
     saveNewBook();
