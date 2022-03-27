@@ -76,95 +76,81 @@ const uiModule = (() => {
     newbooksubmit.addEventListener('click',function(){
         saveNewBook();
     });
+   
+    // FUNCTION to create a single new card when a book is saved
+    const newCard = function(array, indexNo){
+        //create bookCard div with class and ID
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("bookCard");
+        bookCard.classList.add(`bookCard_${indexNo}`);
+        //put this book card iside the card container div
+        document.getElementById("cardcontainer").appendChild(bookCard);
+        //experiment to create separate components to fill out book card
+        const bcTitle = document.createElement("div");
+        bcTitle.classList.add("bcTitle", "bcBold");
+        bcTitle.textContent = 'Title:';
 
-    // FUNCTION to create new cards 
-    // when you add a new book to the library
-    // it removes all book cards and 
-    // recreates them for every book in the myLibrary array.
-    const newCards = function(array){
+        const bcTitleFill = document.createElement("div");
+        bcTitleFill.classList.add( "bcTitleFill", "bcFill");
+        bcTitleFill.textContent = `${array[indexNo].title}`;
 
-        console.log('newCards function is running')
-        //clear existing cards
-        removeAllChildNodes(cardcontainer);
+        const bcAuthor = document.createElement("div");
+        bcAuthor.classList.add( "bcAuthor", "bcBold");
+        bcAuthor.textContent = 'Author:';
 
-        //loop through array
-        for (let i = 0; i < array.length; i++) {
-            console.log(array[i].author);
-            // array[i].setIndexNo(i);
+        const bcAuthorFill = document.createElement("div");
+        bcAuthorFill.classList.add( "bcAuthorFill", "bcFill");
+        bcAuthorFill.textContent = `${array[indexNo].author}`;
 
-            //create bookCard div with class and ID
-            const bookCard = document.createElement("div");
-            bookCard.classList.add( "bookCard");
-            bookCard.classList.add( `bookCard_${i}`);
+        const bcPageCount = document.createElement("div");
+        bcPageCount.classList.add( "bcPageCount", "bcBold");
+        bcPageCount.textContent = 'Pages:';
 
-            //put this book card iside the card container div
-            document.getElementById("cardcontainer").appendChild(bookCard);
+        const bcPageCountFill = document.createElement("div");
+        bcPageCountFill.classList.add( "bcPageCountFill", "bcFill");
+        bcPageCountFill.textContent = `${array[indexNo].pageCount}`;
 
-            //experiment to create separate components to fill out book card
-            const bcTitle = document.createElement("div");
-            bcTitle.classList.add( "bcTitle", "bcBold");
-            bcTitle.textContent = 'Title:';
+        // Add divs to bookcard
+        bookCard.appendChild(bcTitle); 
+        bookCard.appendChild(bcTitleFill); 
+        bookCard.appendChild(bcAuthor); 
+        bookCard.appendChild(bcAuthorFill); 
+        bookCard.appendChild(bcPageCount); 
+        bookCard.appendChild(bcPageCountFill); 
 
-            const bcTitleFill = document.createElement("div");
-            bcTitleFill.classList.add( "bcTitleFill", "bcFill");
-            bcTitleFill.textContent = `${array[i].title}`;
+        // Read status button changes when you click it
+        const readStatusButton = document.createElement('button');
+        readStatusButton.type='button';
+        readStatusButton.classList.add('button','bookcardbutton','readstatusbutton');
 
-            const bcAuthor = document.createElement("div");
-            bcAuthor.classList.add( "bcAuthor", "bcBold");
-            bcAuthor.textContent = 'Author:';
+        if (array[indexNo].readStatus === 'read') {
+            readStatusButton.textContent = 'READ';
+            readStatusButton.classList.add('read');
+        } else if (array[indexNo].readStatus === 'unread') {
+        readStatusButton.textContent = 'UNREAD';
+        readStatusButton.classList.add('unread');
+        };
 
-            const bcAuthorFill = document.createElement("div");
-            bcAuthorFill.classList.add( "bcAuthorFill", "bcFill");
-            bcAuthorFill.textContent = `${array[i].author}`;
+        // Put read status button on this book card
+        bookCard.appendChild(readStatusButton);
 
-            const bcPageCount = document.createElement("div");
-            bcPageCount.classList.add( "bcPageCount", "bcBold");
-            bcPageCount.textContent = 'Pages:';
+        // When you click read Status button, change status
+        readStatusButton.addEventListener('click',function() {
 
-            const bcPageCountFill = document.createElement("div");
-            bcPageCountFill.classList.add( "bcPageCountFill", "bcFill");
-            bcPageCountFill.textContent = `${array[i].pageCount}`;
-
-            // Add divs to bookcard
-            bookCard.appendChild(bcTitle); 
-            bookCard.appendChild(bcTitleFill); 
-            bookCard.appendChild(bcAuthor); 
-            bookCard.appendChild(bcAuthorFill); 
-            bookCard.appendChild(bcPageCount); 
-            bookCard.appendChild(bcPageCountFill); 
-
-            // Read status button changes when you click it
-            const readStatusButton = document.createElement('button');
-            readStatusButton.type='button';
-            readStatusButton.classList.add('button','bookcardbutton','readstatusbutton');
-
-            if (array[i].readStatus === 'read'){
-                    readStatusButton.textContent = 'READ';
-                    readStatusButton.classList.add('read');
-            }else if (array[i].readStatus === 'unread'){
+            if (array[indexNo].readStatus === 'read'){
+                array[indexNo].readStatus = 'unread';
+                console.log(array[indexNo].readStatus);
                 readStatusButton.textContent = 'UNREAD';
+                readStatusButton.classList.remove('read');
                 readStatusButton.classList.add('unread');
+            } else {
+                array[indexNo].readStatus = 'read';
+                readStatusButton.textContent = 'READ';
+                console.log(array[indexNo].readStatus);
+                readStatusButton.classList.remove('unread');
+                readStatusButton.classList.add('read');
             };
-
-            // Put read status button on this book card
-            bookCard.appendChild(readStatusButton); 
-            // When you click read Status button, change status
-            readStatusButton.addEventListener('click',function(){
-
-                if (array[i].readStatus === 'read'){
-                    array[i].readStatus = 'unread';
-                    console.log(array[i].readStatus);
-                    readStatusButton.textContent = 'UNREAD';
-                    readStatusButton.classList.remove('read');
-                    readStatusButton.classList.add('unread');
-                } else {
-                    array[i].readStatus = 'read';
-                    readStatusButton.textContent = 'READ';
-                    console.log(array[i].readStatus);
-                    readStatusButton.classList.remove('unread');
-                    readStatusButton.classList.add('read');
-                };
-            });
+        });
 
         // Create switch icon
         const switchIcon = document.createElement("img");
@@ -188,16 +174,14 @@ const uiModule = (() => {
             // Remove book card with "this" instead
             bookCard.remove();
             // See that book object exists
-            console.log(libraryModule.myLibrary[i]);
+            console.log(libraryModule.myLibrary[indexNo]);
             // Remove book object from myLibrary array by index number
-            libraryModule.myLibrary.splice(i, 1);
+            libraryModule.myLibrary.splice(indexNo, 1);
             // See that book object has been removed from array
-            console.log(libraryModule.myLibrary[i]);
+            console.log(libraryModule.myLibrary[indexNo]);
         });
-    };}
-    // END create new cards function
-
-
+    }       
+    // END create new card function
 
     // FUNCTION to save new book
     function saveNewBook() {
@@ -217,13 +201,12 @@ const uiModule = (() => {
         const book = new Book(title, author, pageCount);
         book.setReadStatus(readStatus);
         book.setIdentifier(`ML_${bookCounter}`);
-         // is this a way to get the index number?
         book.setIndexNo(libraryModule.myLibrary.length);
         libraryModule.myLibrary.push(book);
     
         console.log(book);
         console.log([libraryModule.myLibrary]); 
-        newCards(libraryModule.myLibrary);
+        newCard(libraryModule.myLibrary,book.indexNo);
         console.log(readStatus.value);
         document.getElementById("newBookForm").reset();
         hideElement("newBookFormContainer");
