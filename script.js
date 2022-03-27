@@ -12,7 +12,7 @@ const libraryModule = (() => {
 
 // BOOK CLASS
 class Book {
-    
+
     constructor (title,author,pageCount,readStatus){
         this.title = title;
         this.author = author;
@@ -120,8 +120,8 @@ const uiModule = (() => {
             readStatusButton.textContent = 'READ';
             readStatusButton.classList.add('read');
         } else if (array[indexNo].readStatus === 'unread') {
-        readStatusButton.textContent = 'UNREAD';
-        readStatusButton.classList.add('unread');
+            readStatusButton.textContent = 'UNREAD';
+            readStatusButton.classList.add('unread');
         };
 
         // Put read status button on this book card
