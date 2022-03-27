@@ -1,5 +1,3 @@
-
-
 // LIBRARY MODULE
 const libraryModule = (() => {
 
@@ -11,6 +9,7 @@ const libraryModule = (() => {
 })();
 // END LIBRARY MODULE
 
+
 // BOOK CLASS
 class Book {
     // constructor of prototype for books
@@ -20,12 +19,11 @@ class Book {
         this.pageCount = pageCount;
         this.readStatus = readStatus;
     }
-        // This is an instance method, right?
+
         setIndexNo(indexNo) {
             this.indexNo = indexNo;
         }
 
-        // This is an instance method, right?
         setIdentifier(identifier) {
             this.identifier = identifier;
         }
@@ -71,12 +69,12 @@ const uiModule = (() => {
     // EVENT LISTENERS
     // New Book button is pushed
     newbookbutton.addEventListener('click',function(){
-    displayElement("newBookFormContainer");
+        displayElement("newBookFormContainer");
     });
 
     // Submit button on New Book form is pushed   
     newbooksubmit.addEventListener('click',function(){
-    saveNewBook();
+        saveNewBook();
     });
 
     // FUNCTION to create new cards 
@@ -92,7 +90,7 @@ const uiModule = (() => {
         //loop through array
         for (let i = 0; i < array.length; i++) {
             console.log(array[i].author);
-            array[i].setIndexNo(i);
+            // array[i].setIndexNo(i);
 
             //create bookCard div with class and ID
             const bookCard = document.createElement("div");
@@ -127,7 +125,7 @@ const uiModule = (() => {
             bcPageCountFill.classList.add( "bcPageCountFill", "bcFill");
             bcPageCountFill.textContent = `${array[i].pageCount}`;
 
-            //add divs to bookcard
+            // Add divs to bookcard
             bookCard.appendChild(bcTitle); 
             bookCard.appendChild(bcTitleFill); 
             bookCard.appendChild(bcAuthor); 
@@ -135,7 +133,7 @@ const uiModule = (() => {
             bookCard.appendChild(bcPageCount); 
             bookCard.appendChild(bcPageCountFill); 
 
-            //READ STATUS BUTTON CHANGES WHEN YOU CLICK IT
+            // Read status button changes when you click it
             const readStatusButton = document.createElement('button');
             readStatusButton.type='button';
             readStatusButton.classList.add('button','bookcardbutton','readstatusbutton');
@@ -148,9 +146,9 @@ const uiModule = (() => {
                 readStatusButton.classList.add('unread');
             };
 
-            // put read status button on this book card
+            // Put read status button on this book card
             bookCard.appendChild(readStatusButton); 
-            // when you click read Status button
+            // When you click read Status button, change status
             readStatusButton.addEventListener('click',function(){
 
                 if (array[i].readStatus === 'read'){
@@ -173,34 +171,36 @@ const uiModule = (() => {
         switchIcon.classList.add("switchicon");
         switchIcon.src = "images/switch-horizontal.svg";
 
-        // add switch icon to book card
+        // Add switch icon to book card
         bookCard.appendChild(switchIcon);
 
-        // create remover button for each book card and add text and classes
+        // Create remover button for each book card and add text and classes
         const removerButton = document.createElement('button');
         removerButton.type='button';
         removerButton.textContent = 'Delete';
         removerButton.classList.add('removerbutton','button','bookcardbutton');
 
-        // put remover button on this book card
+        // Put remover button on this book card
         bookCard.appendChild(removerButton); 
 
-        // when remover button is clicked
+        // When remover button is clicked
         removerButton.addEventListener('click',function(){
-            // remove book card with "this" instead
+            // Remove book card with "this" instead
             bookCard.remove();
-            // see that book object exists
+            // See that book object exists
             console.log(libraryModule.myLibrary[i]);
-            // remove book object from myLibrary array by index number
+            // Remove book object from myLibrary array by index number
             libraryModule.myLibrary.splice(i, 1);
-            // see that book object has been removed from array
+            // See that book object has been removed from array
             console.log(libraryModule.myLibrary[i]);
         });
     };}
     // END create new cards function
 
+
+
     // FUNCTION to save new book
-    function saveNewBook(){
+    function saveNewBook() {
         bookCounter = bookCounter+1;
         title = document.getElementById('title').value;
         author = document.getElementById('author').value;
@@ -208,7 +208,7 @@ const uiModule = (() => {
 
         let readStatus = '';
 
-        if (readValue.checked){
+        if (readValue.checked) {
             readStatus='read';
         }else{
             readStatus='unread';
@@ -217,8 +217,10 @@ const uiModule = (() => {
         const book = new Book(title, author, pageCount);
         book.setReadStatus(readStatus);
         book.setIdentifier(`ML_${bookCounter}`);
-
+         // is this a way to get the index number?
+        book.setIndexNo(libraryModule.myLibrary.length);
         libraryModule.myLibrary.push(book);
+    
         console.log(book);
         console.log([libraryModule.myLibrary]); 
         newCards(libraryModule.myLibrary);
