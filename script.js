@@ -12,7 +12,7 @@ const libraryModule = (() => {
 
 // BOOK CLASS
 class Book {
-    // constructor of prototype for books
+    
     constructor (title,author,pageCount,readStatus){
         this.title = title;
         this.author = author;
@@ -59,13 +59,6 @@ const uiModule = (() => {
         document.getElementById(ID).style.display ='none';
     }
 
-    // Function to remove all child elements
-    function removeAllChildNodes(parent) {
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
-    }
-
     // EVENT LISTENERS
     // New Book button is pushed
     newbookbutton.addEventListener('click',function(){
@@ -79,13 +72,13 @@ const uiModule = (() => {
    
     // FUNCTION to create a single new card when a book is saved
     const newCard = function(array, indexNo){
-        //create bookCard div with class and ID
+        // Create bookCard div with classes
         const bookCard = document.createElement("div");
         bookCard.classList.add("bookCard");
         bookCard.classList.add(`bookCard_${indexNo}`);
-        //put this book card iside the card container div
+        // Put this book card iside the card container div
         document.getElementById("cardcontainer").appendChild(bookCard);
-        //experiment to create separate components to fill out book card
+        // Experiment to create separate components to fill out book card
         const bcTitle = document.createElement("div");
         bcTitle.classList.add("bcTitle", "bcBold");
         bcTitle.textContent = 'Title:';
