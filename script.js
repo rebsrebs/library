@@ -67,7 +67,12 @@ const uiModule = (() => {
 
     // Submit button on New Book form is pushed   
     newbooksubmit.addEventListener('click',function(){
+        if (!titleFV.validity.valid) {
+            // If it isn't, we display an appropriate error message
+            showError();
+        } else {
         saveNewBook();
+        }
     });
    
     // FUNCTION to create a single new card when a book is saved
@@ -206,3 +211,37 @@ const uiModule = (() => {
     }
 })();
 // END UI MODULE
+
+// Form Validation
+const formFV = document.getElementById('newBookForm');
+const titleFV = document.getElementById('title');
+const titleErrorFV = document.getElementById('titleError')
+
+// titleFV.addEventListener('input', (event) => {
+formFV.addEventListener('input', (event) => {
+  // Each time the user types something, we check if the
+  // form fields are valid.
+  if (titleFV.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    titleErrorFV.textContent = ''; // Reset the content of the message
+    titleErrorFV.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    showError();
+  }
+});
+
+function showError() {
+if (titleFV.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+    titleErrorFV.textContent = 'You need to enter a title.';
+} else if (titleFV.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    titleErrorFV.textContent = `Title must be at least ${titleFV.minLength} characters; you have ${titleFV.value.length}.`;
+}
+// Set the styling appropriately
+titleErrorFV.className = 'error active';
+}

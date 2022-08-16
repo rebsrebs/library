@@ -59,13 +59,14 @@ h3{
     display:none;
     border:1px solid black;
     border-radius:15px;
-    padding:20px 30px 20px 30px;
+    padding:25px 30px 25px 30px;
     margin:20px;
     box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
     min-width:30vw;
     max-width:600px;
     /* animation: append-animate .3s linear; */
     animation: append-animate .2s ease-out;
+    position: relative;
 }
 
 #newBookForm{
@@ -73,6 +74,8 @@ h3{
     grid-template-rows: auto auto auto auto auto auto auto;
     justify-content:center;
     width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #newbooksubmit{
@@ -128,6 +131,10 @@ fieldset{
 .radio{
     margin:5px;
     padding:2px;
+}
+
+#bookdetails {
+    margin-bottom: 8px;
 }
 
 
@@ -323,3 +330,37 @@ align-items:baseline;
     
     
 }
+
+/* form validation */
+input:invalid {
+    border-color: rgb(237, 41, 194);
+    background-color: #FDD;
+}
+
+input:invalid:required {
+    background-image: linear-gradient(to right, rgb(244, 215, 220), rgb(239, 225, 204));
+}
+
+input:invalid:focus{
+    background-color:yellow;
+}
+
+.error {
+    width  : 100%;
+    padding: 1px;
+    font-size: 90%;
+    font-weight: bold;
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+    box-sizing: border-box;
+    min-height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+  
+  .error.active {
+    padding: 0.3em;
+    background-color: rgb(243, 145, 66);
+  }
