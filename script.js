@@ -236,11 +236,11 @@ function showError() {
 if (titleFV.validity.valueMissing) {
     // If the field is empty,
     // display the following error message.
-    titleErrorFV.textContent = 'You need to enter a title.';
+    titleErrorFV.textContent = 'Please enter a title.';
 } else if (titleFV.validity.tooShort) {
     // If the data is too short,
     // display the following error message.
-    titleErrorFV.textContent = `Title must be at least ${titleFV.minLength} characters; you have ${titleFV.value.length}.`;
+    titleErrorFV.textContent = `Title must be at least ${titleFV.minLength} characters. You have ${titleFV.value.length}.`;
 }
 // Set the styling appropriately
 titleErrorFV.className = 'error active';

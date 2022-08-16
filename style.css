@@ -74,8 +74,8 @@ h3{
     grid-template-rows: auto auto auto auto auto auto auto;
     justify-content:center;
     width:100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #newbooksubmit{
@@ -134,7 +134,7 @@ fieldset{
 }
 
 #bookdetails {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 
@@ -332,13 +332,16 @@ align-items:baseline;
 }
 
 /* form validation */
-input:invalid {
+/* input:invalid {
+    border-style: solid;
     border-color: rgb(237, 41, 194);
-    background-color: #FDD;
-}
+} */
 
 input:invalid:required {
-    background-image: linear-gradient(to right, rgb(244, 215, 220), rgb(239, 225, 204));
+    background-image: linear-gradient(to right, rgb(251, 246, 247), rgb(234, 243, 232));
+    border-style: solid;
+    border-width: 1pxs;
+    border-color: rgb(12, 240, 57);
 }
 
 input:invalid:focus{
@@ -347,7 +350,7 @@ input:invalid:focus{
 
 .error {
     width  : 100%;
-    padding: 1px;
+    padding: 0.3em;
     font-size: 90%;
     font-weight: bold;
     color: white;
@@ -362,5 +365,15 @@ input:invalid:focus{
   
   .error.active {
     padding: 0.3em;
-    background-color: rgb(243, 145, 66);
+    background-color: rgb(245, 31, 31);
+  }
+
+  #requiredkey {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0px 0px 15px 15px;
+    box-sizing: border-box;
+    padding: 0.3em;
+    font-size:80%;
   }
